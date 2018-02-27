@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableTo.UI", "src\DataTableTo.UI\DataTableTo.UI.csproj", "{DC8F5383-2CF8-4399-96A5-FF5FD3179843}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableTo.Domain", "src\DataTableTo.Domain\DataTableTo.Domain.csproj", "{4930EE69-D86F-40E6-9C3F-825875473BFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableTo.Infra", "src\DataTableTo.Infra\DataTableTo.Infra.csproj", "{3B391C75-46DC-4BAA-80BC-7B78CAF377A1}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC8F5383-2CF8-4399-96A5-FF5FD3179843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8F5383-2CF8-4399-96A5-FF5FD3179843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8F5383-2CF8-4399-96A5-FF5FD3179843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8F5383-2CF8-4399-96A5-FF5FD3179843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4930EE69-D86F-40E6-9C3F-825875473BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4930EE69-D86F-40E6-9C3F-825875473BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4930EE69-D86F-40E6-9C3F-825875473BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4930EE69-D86F-40E6-9C3F-825875473BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B391C75-46DC-4BAA-80BC-7B78CAF377A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B391C75-46DC-4BAA-80BC-7B78CAF377A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B391C75-46DC-4BAA-80BC-7B78CAF377A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B391C75-46DC-4BAA-80BC-7B78CAF377A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

@@ -30,8 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
-            this.tabPageConfiuration = new System.Windows.Forms.TabPage();
-            this.cmdOk = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExecute = new System.Windows.Forms.Button();
             this.txtTableName = new System.Windows.Forms.TextBox();
@@ -39,18 +37,20 @@
             this.txtColumnPrefix = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listResult = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtServer = new System.Windows.Forms.TextBox();
-            this.txtLogin = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.tabPageConfiuration = new System.Windows.Forms.TabPage();
             this.txtDatabase = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.txtServer = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmdOk = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageProcess.SuspendLayout();
-            this.tabPageConfiuration.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPageConfiuration.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -77,33 +77,6 @@
             this.tabPageProcess.TabIndex = 0;
             this.tabPageProcess.Text = "De Para";
             this.tabPageProcess.UseVisualStyleBackColor = true;
-            // 
-            // tabPageConfiuration
-            // 
-            this.tabPageConfiuration.Controls.Add(this.txtDatabase);
-            this.tabPageConfiuration.Controls.Add(this.txtPassword);
-            this.tabPageConfiuration.Controls.Add(this.txtLogin);
-            this.tabPageConfiuration.Controls.Add(this.txtServer);
-            this.tabPageConfiuration.Controls.Add(this.label6);
-            this.tabPageConfiuration.Controls.Add(this.label5);
-            this.tabPageConfiuration.Controls.Add(this.label4);
-            this.tabPageConfiuration.Controls.Add(this.label3);
-            this.tabPageConfiuration.Location = new System.Drawing.Point(4, 22);
-            this.tabPageConfiuration.Name = "tabPageConfiuration";
-            this.tabPageConfiuration.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConfiuration.Size = new System.Drawing.Size(615, 368);
-            this.tabPageConfiuration.TabIndex = 1;
-            this.tabPageConfiuration.Text = "Configuração";
-            this.tabPageConfiuration.UseVisualStyleBackColor = true;
-            // 
-            // cmdOk
-            // 
-            this.cmdOk.Location = new System.Drawing.Point(14, 402);
-            this.cmdOk.Name = "cmdOk";
-            this.cmdOk.Size = new System.Drawing.Size(75, 23);
-            this.cmdOk.TabIndex = 4;
-            this.cmdOk.Text = "OK";
-            this.cmdOk.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -177,68 +150,23 @@
             this.listResult.Size = new System.Drawing.Size(600, 264);
             this.listResult.TabIndex = 7;
             // 
-            // label3
+            // tabPageConfiuration
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Servidor";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 46);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Login";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Senha";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Banco";
-            // 
-            // txtServer
-            // 
-            this.txtServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtServer.Location = new System.Drawing.Point(83, 16);
-            this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(494, 20);
-            this.txtServer.TabIndex = 5;
-            // 
-            // txtLogin
-            // 
-            this.txtLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogin.Location = new System.Drawing.Point(83, 42);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(494, 20);
-            this.txtLogin.TabIndex = 6;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(83, 68);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(494, 20);
-            this.txtPassword.TabIndex = 7;
+            this.tabPageConfiuration.Controls.Add(this.txtDatabase);
+            this.tabPageConfiuration.Controls.Add(this.txtPassword);
+            this.tabPageConfiuration.Controls.Add(this.txtLogin);
+            this.tabPageConfiuration.Controls.Add(this.txtServer);
+            this.tabPageConfiuration.Controls.Add(this.label6);
+            this.tabPageConfiuration.Controls.Add(this.label5);
+            this.tabPageConfiuration.Controls.Add(this.label4);
+            this.tabPageConfiuration.Controls.Add(this.label3);
+            this.tabPageConfiuration.Location = new System.Drawing.Point(4, 22);
+            this.tabPageConfiuration.Name = "tabPageConfiuration";
+            this.tabPageConfiuration.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageConfiuration.Size = new System.Drawing.Size(615, 368);
+            this.tabPageConfiuration.TabIndex = 1;
+            this.tabPageConfiuration.Text = "Configuração";
+            this.tabPageConfiuration.UseVisualStyleBackColor = true;
             // 
             // txtDatabase
             // 
@@ -249,6 +177,79 @@
             this.txtDatabase.Size = new System.Drawing.Size(494, 20);
             this.txtDatabase.TabIndex = 8;
             // 
+            // txtPassword
+            // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPassword.Location = new System.Drawing.Point(83, 68);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(494, 20);
+            this.txtPassword.TabIndex = 7;
+            // 
+            // txtLogin
+            // 
+            this.txtLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogin.Location = new System.Drawing.Point(83, 42);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(494, 20);
+            this.txtLogin.TabIndex = 6;
+            // 
+            // txtServer
+            // 
+            this.txtServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtServer.Location = new System.Drawing.Point(83, 16);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Size = new System.Drawing.Size(494, 20);
+            this.txtServer.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Banco";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Senha";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Login";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Servidor";
+            // 
+            // cmdOk
+            // 
+            this.cmdOk.Location = new System.Drawing.Point(14, 402);
+            this.cmdOk.Name = "cmdOk";
+            this.cmdOk.Size = new System.Drawing.Size(75, 23);
+            this.cmdOk.TabIndex = 4;
+            this.cmdOk.Text = "OK";
+            this.cmdOk.UseVisualStyleBackColor = true;
+            // 
             // DataTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,13 +258,13 @@
             this.Controls.Add(this.cmdOk);
             this.Controls.Add(this.tabControl1);
             this.Name = "DataTableForm";
-            this.Text = "DataTableForm";
+            this.Text = "Data Table Para";
             this.tabControl1.ResumeLayout(false);
             this.tabPageProcess.ResumeLayout(false);
-            this.tabPageConfiuration.ResumeLayout(false);
-            this.tabPageConfiuration.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPageConfiuration.ResumeLayout(false);
+            this.tabPageConfiuration.PerformLayout();
             this.ResumeLayout(false);
 
         }
