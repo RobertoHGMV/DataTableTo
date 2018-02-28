@@ -16,10 +16,14 @@ namespace DataTableTo.Infra.Repositories
             {
                 conn.ConnectionString = $"Server={dt.Server};Database={dt.Database};User={dt.Login};Password={dt.Password}";
 
+                var queryToExec = !dt.CustomMehtodExtension
+                    ? GetFormatedFromTo(dt.TableName, dt.ColumnPrefix, dt.ColumnSufix)
+                    : GetFormatedFromToCustom(dt.TableName, dt.ColumnPrefix, dt.ColumnSufix);
+
                 var cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = GetQuery(dt.TableName, dt.ColumnPrefix);
+                cmd.CommandText = queryToExec;
                 conn.Open();
 
                 var data = cmd.ExecuteReader();
@@ -37,47 +41,64 @@ namespace DataTableTo.Infra.Repositories
             }
         }
 
-        private string GetQuery(string tableName, string prefix)
+        private string GetFormatedFromTo(string tableName, string prefix, string sufix)
         {
             if (!string.IsNullOrEmpty(prefix))
                 prefix = prefix + ".";
 
             return $@"
-                      SELECT result = REPLACE(REPLACE(
-                      ''+ CAST(
-                      			CASE DATA_TYPE
-                      				WHEN 'int'      THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      				WHEN 'nvarchar' THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      				WHEN 'nchar'    THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      				WHEN 'datetime' THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      				WHEN 'decimal'  THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      				WHEN 'money'    THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      				WHEN 'bit'      THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = !DBNull.Value.Equals(row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']) && row[{prefix}'+ CAST(COLUMN_NAME AS NVARCHAR) +']'
-                      			 END AS NVARCHAR(MAX)) +'
-                      '+ CAST(
-                      			CASE DATA_TYPE
-                      				WHEN 'int'      THEN '?.To<int'
-                      				WHEN 'nvarchar' THEN '.To<string'
-                      				WHEN 'nchar' THEN '.To<string'
-                      				WHEN 'datetime' THEN '.To<DateTime'
-                      				WHEN 'decimal'  THEN '?.To<decimal'
-                      				WHEN 'money'  THEN '?.To<decimal'
-                      				WHEN 'bit'      THEN '.To<bool'
-                      			 END AS NVARCHAR(MAX)) +'>() 
-                      			 '+ CAST(
-                      			CASE DATA_TYPE
-                      				WHEN 'int'      THEN ' ?? 0'
-                      				WHEN 'nvarchar' THEN ''
-                      				WHEN 'nchar' THEN ''
-                      				WHEN 'datetime' THEN ''
-                      				WHEN 'decimal'  THEN ' ?? 0'
-                      				WHEN 'money'  THEN ' ?? 0'
-                      				WHEN 'bit'      THEN ''
-                      			 END AS NVARCHAR(MAX)) +';'
-                      			 ,
-                      			 CHAR(13) + Char(10) ,' '), CHAR(10), '')
-                      FROM INFORMATION_SCHEMA.COLUMNS
-                      WHERE TABLE_NAME = '{tableName}'";
+                    DECLARE @tableName NVARCHAR(200), 
+                    		@prefix    NVARCHAR(200), 
+                    		@sufix     NVARCHAR(200)
+                    
+                    SET @tableName = '{tableName}'
+                    SET @prefix    = '{prefix}'
+                    SET @sufix     = '{sufix}'
+                    
+                    SELECT result = REPLACE(REPLACE(
+                                          ''+ CAST(
+                                          			CASE DATA_TYPE
+                                          				WHEN 'int'      THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = !DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) ? Convert.ToInt32(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) : 0;'
+                                          				WHEN 'nvarchar' THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'].ToString();'
+                                          				WHEN 'nchar'    THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'].ToString();'
+                                          				WHEN 'decimal'  THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = !DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) ? Convert.ToDecimal(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) : 0;'
+                                          				WHEN 'money'    THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = !DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) ? Convert.ToDecimal(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) : 0;'
+                                          				WHEN 'bit'      THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = !DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) && Convert.ToBoolean(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']);'
+                    									WHEN 'datetime' THEN 'if (!DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'])) '+ CAST(COLUMN_NAME AS NVARCHAR) +' = Convert.ToDateTime(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']);'
+                                          			 END AS NVARCHAR(MAX)),
+                                          			 CHAR(13) + Char(10) ,' '), CHAR(10), '')
+                                          FROM INFORMATION_SCHEMA.COLUMNS
+                                          WHERE TABLE_NAME = ''+ @tableName +''";
+        }
+
+        private string GetFormatedFromToCustom(string tableName, string prefix, string sufix)
+        {
+            if (!string.IsNullOrEmpty(prefix))
+                prefix = prefix + ".";
+
+            return $@"
+                    DECLARE @tableName NVARCHAR(200), 
+                    		@prefix    NVARCHAR(200), 
+                    		@sufix     NVARCHAR(200)
+                    
+                    SET @tableName = '{tableName}'
+                    SET @prefix    = '{prefix}'
+                    SET @sufix     = '{sufix}'
+                    
+                    SELECT result = REPLACE(REPLACE(
+                                          ''+ CAST(
+                                          			CASE DATA_TYPE
+                                          				WHEN 'int'      THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']?.To<int>() ?? 0;'
+                                          				WHEN 'nvarchar' THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'].To<string>();'
+                                          				WHEN 'nchar'    THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'].To<string>();'                      				
+                                          				WHEN 'decimal'  THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']?.To<decimal>() ?? 0;'
+                                          				WHEN 'money'    THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']?.To<decimal>() ?? 0;'
+                                          				WHEN 'bit'      THEN ''+ CAST(COLUMN_NAME AS NVARCHAR) +' = !DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +']) && row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'].To<bool>();'
+                    									WHEN 'datetime' THEN 'if (!DBNull.Value.Equals(row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'])) '+ CAST(COLUMN_NAME AS NVARCHAR) +' = row['+ @prefix + CAST(COLUMN_NAME AS NVARCHAR) + @sufix +'].To<DateTime>();'
+                                          			 END AS NVARCHAR(MAX)),
+                                          			 CHAR(13) + Char(10) ,' '), CHAR(10), '')
+                                          FROM INFORMATION_SCHEMA.COLUMNS
+                                          WHERE TABLE_NAME = ''+ @tableName +''";
         }
     }
 }

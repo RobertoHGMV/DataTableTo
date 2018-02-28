@@ -16,6 +16,7 @@ namespace DataTableTo.UI
 
             _repository = new UserDataRepository();
             _userData = new UserData();
+            FillControls();
         }
 
         private void MessageError(Exception ex)
@@ -32,6 +33,7 @@ namespace DataTableTo.UI
 
             _userData.TableName = txtTableName.Text;
             _userData.ColumnPrefix = txtColumnPrefix.Text;
+            _userData.ColumnSufix = txtColumnSufix.Text;
         }
 
         private void FillControls()
@@ -40,6 +42,9 @@ namespace DataTableTo.UI
             txtLogin.Text = _userData.Login;
             txtPassword.Text = _userData.Password;
             txtDatabase.Text = _userData.Database;
+            txtMethodExtension.Text = _userData.MethodExtension;
+            chkCustomMethodExt.Checked = _userData.CustomMehtodExtension;
+            SetChkDotNet();
         }
 
         private void FillResults()
@@ -47,6 +52,11 @@ namespace DataTableTo.UI
             FillClass();
             _repository.FillResults(_userData);
             listResult.DataSource = _userData.Results;
+        }
+
+        private void SetChkDotNet()
+        {
+            chkDotNet.Checked = !chkCustomMethodExt.Checked;
         }
 
         private void btnResults_Click(object sender, EventArgs e)
@@ -66,6 +76,18 @@ namespace DataTableTo.UI
             try
             {
                 Close();
+            }
+            catch (Exception ex)
+            {
+                MessageError(ex);
+            }
+        }
+
+        private void chkCustomMethodExt_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SetChkDotNet();
             }
             catch (Exception ex)
             {
