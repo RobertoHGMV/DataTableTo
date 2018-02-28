@@ -79,6 +79,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataTableTo.Domain\DataTableTo.Domain.csproj">
+      <Project>{4930ee69-d86f-40e6-9c3f-825875473bfa}</Project>
+      <Name>DataTableTo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTableTo.Infra\DataTableTo.Infra.csproj">
+      <Project>{3b391c75-46dc-4baa-80bc-7b78caf377a1}</Project>
+      <Name>DataTableTo.Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

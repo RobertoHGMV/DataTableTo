@@ -31,7 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnExecute = new System.Windows.Forms.Button();
+            this.btnResults = new System.Windows.Forms.Button();
             this.txtTableName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtColumnPrefix = new System.Windows.Forms.TextBox();
@@ -82,7 +82,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnExecute);
+            this.groupBox1.Controls.Add(this.btnResults);
             this.groupBox1.Controls.Add(this.txtTableName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtColumnPrefix);
@@ -93,15 +93,16 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
-            // btnExecute
+            // btnResults
             // 
-            this.btnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExecute.Location = new System.Drawing.Point(507, 19);
-            this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(75, 23);
-            this.btnExecute.TabIndex = 3;
-            this.btnExecute.Text = "Executar";
-            this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResults.Location = new System.Drawing.Point(507, 19);
+            this.btnResults.Name = "btnResults";
+            this.btnResults.Size = new System.Drawing.Size(75, 23);
+            this.btnResults.TabIndex = 3;
+            this.btnResults.Text = "Executar";
+            this.btnResults.UseVisualStyleBackColor = true;
+            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // txtTableName
             // 
@@ -243,12 +244,14 @@
             // 
             // cmdOk
             // 
+            this.cmdOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmdOk.Location = new System.Drawing.Point(14, 402);
             this.cmdOk.Name = "cmdOk";
             this.cmdOk.Size = new System.Drawing.Size(75, 23);
             this.cmdOk.TabIndex = 4;
             this.cmdOk.Text = "OK";
             this.cmdOk.UseVisualStyleBackColor = true;
+            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
             // 
             // DataTableForm
             // 
@@ -274,7 +277,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageProcess;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnExecute;
+        private System.Windows.Forms.Button btnResults;
         private System.Windows.Forms.TextBox txtTableName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtColumnPrefix;
