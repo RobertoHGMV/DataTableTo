@@ -31,6 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtColumnSufix = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnResults = new System.Windows.Forms.Button();
             this.txtTableName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,29 +40,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.listResult = new System.Windows.Forms.ListBox();
             this.tabPageConfiuration = new System.Windows.Forms.TabPage();
-            this.txtDatabase = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtLogin = new System.Windows.Forms.TextBox();
-            this.txtServer = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmdOk = new System.Windows.Forms.Button();
-            this.txtColumnSufix = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkCustomMethodExt = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtMethodExtension = new System.Windows.Forms.TextBox();
             this.chkDotNet = new System.Windows.Forms.CheckBox();
+            this.txtMethodExtension = new System.Windows.Forms.TextBox();
+            this.lbExtensionMethod = new System.Windows.Forms.Label();
+            this.chkCustomMethodExt = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtServer = new System.Windows.Forms.TextBox();
+            this.txtDatabase = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmdOk = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageProcess.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPageConfiuration.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -105,13 +105,31 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
+            // txtColumnSufix
+            // 
+            this.txtColumnSufix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtColumnSufix.Location = new System.Drawing.Point(117, 68);
+            this.txtColumnSufix.Name = "txtColumnSufix";
+            this.txtColumnSufix.Size = new System.Drawing.Size(374, 20);
+            this.txtColumnSufix.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Sufixo da Coluna*";
+            // 
             // btnResults
             // 
             this.btnResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnResults.Location = new System.Drawing.Point(506, 40);
             this.btnResults.Name = "btnResults";
             this.btnResults.Size = new System.Drawing.Size(75, 23);
-            this.btnResults.TabIndex = 3;
+            this.btnResults.TabIndex = 4;
             this.btnResults.Text = "Executar";
             this.btnResults.UseVisualStyleBackColor = true;
             this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
@@ -175,107 +193,58 @@
             this.tabPageConfiuration.Text = "Configuração";
             this.tabPageConfiuration.UseVisualStyleBackColor = true;
             // 
-            // txtDatabase
+            // groupBox3
             // 
-            this.txtDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox3.Controls.Add(this.chkDotNet);
+            this.groupBox3.Controls.Add(this.txtMethodExtension);
+            this.groupBox3.Controls.Add(this.lbExtensionMethod);
+            this.groupBox3.Controls.Add(this.chkCustomMethodExt);
+            this.groupBox3.Location = new System.Drawing.Point(8, 157);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(598, 126);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tipo de Conversão";
+            // 
+            // chkDotNet
+            // 
+            this.chkDotNet.AutoSize = true;
+            this.chkDotNet.Enabled = false;
+            this.chkDotNet.Location = new System.Drawing.Point(21, 26);
+            this.chkDotNet.Name = "chkDotNet";
+            this.chkDotNet.Size = new System.Drawing.Size(88, 17);
+            this.chkDotNet.TabIndex = 3;
+            this.chkDotNet.Text = "Coversão C#";
+            this.chkDotNet.UseVisualStyleBackColor = true;
+            // 
+            // txtMethodExtension
+            // 
+            this.txtMethodExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDatabase.Location = new System.Drawing.Point(79, 106);
-            this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.Size = new System.Drawing.Size(494, 20);
-            this.txtDatabase.TabIndex = 8;
+            this.txtMethodExtension.Location = new System.Drawing.Point(78, 87);
+            this.txtMethodExtension.Name = "txtMethodExtension";
+            this.txtMethodExtension.Size = new System.Drawing.Size(494, 20);
+            this.txtMethodExtension.TabIndex = 11;
             // 
-            // txtPassword
+            // lbExtensionMethod
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(79, 78);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(494, 20);
-            this.txtPassword.TabIndex = 7;
+            this.lbExtensionMethod.AutoSize = true;
+            this.lbExtensionMethod.Location = new System.Drawing.Point(75, 71);
+            this.lbExtensionMethod.Name = "lbExtensionMethod";
+            this.lbExtensionMethod.Size = new System.Drawing.Size(144, 13);
+            this.lbExtensionMethod.TabIndex = 1;
+            this.lbExtensionMethod.Text = "Método de extensão - Ex. To";
             // 
-            // txtLogin
+            // chkCustomMethodExt
             // 
-            this.txtLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogin.Location = new System.Drawing.Point(79, 52);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(494, 20);
-            this.txtLogin.TabIndex = 6;
-            // 
-            // txtServer
-            // 
-            this.txtServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtServer.Location = new System.Drawing.Point(79, 26);
-            this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(494, 20);
-            this.txtServer.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Banco*";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 82);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Senha*";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Login*";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Servidor*";
-            // 
-            // cmdOk
-            // 
-            this.cmdOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cmdOk.Location = new System.Drawing.Point(14, 402);
-            this.cmdOk.Name = "cmdOk";
-            this.cmdOk.Size = new System.Drawing.Size(75, 23);
-            this.cmdOk.TabIndex = 4;
-            this.cmdOk.Text = "OK";
-            this.cmdOk.UseVisualStyleBackColor = true;
-            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
-            // 
-            // txtColumnSufix
-            // 
-            this.txtColumnSufix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtColumnSufix.Location = new System.Drawing.Point(117, 68);
-            this.txtColumnSufix.Name = "txtColumnSufix";
-            this.txtColumnSufix.Size = new System.Drawing.Size(374, 20);
-            this.txtColumnSufix.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 72);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Sufixo da Coluna*";
+            this.chkCustomMethodExt.AutoSize = true;
+            this.chkCustomMethodExt.Location = new System.Drawing.Point(21, 49);
+            this.chkCustomMethodExt.Name = "chkCustomMethodExt";
+            this.chkCustomMethodExt.Size = new System.Drawing.Size(139, 17);
+            this.chkCustomMethodExt.TabIndex = 10;
+            this.chkCustomMethodExt.Text = "Conversão customizada";
+            this.chkCustomMethodExt.UseVisualStyleBackColor = true;
+            this.chkCustomMethodExt.CheckedChanged += new System.EventHandler(this.chkCustomMethodExt_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -294,58 +263,89 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Configurações de conexão";
             // 
-            // groupBox3
+            // txtServer
             // 
-            this.groupBox3.Controls.Add(this.chkDotNet);
-            this.groupBox3.Controls.Add(this.txtMethodExtension);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.chkCustomMethodExt);
-            this.groupBox3.Location = new System.Drawing.Point(8, 157);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(598, 126);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo de Conversão";
-            // 
-            // chkCustomMethodExt
-            // 
-            this.chkCustomMethodExt.AutoSize = true;
-            this.chkCustomMethodExt.Location = new System.Drawing.Point(21, 49);
-            this.chkCustomMethodExt.Name = "chkCustomMethodExt";
-            this.chkCustomMethodExt.Size = new System.Drawing.Size(139, 17);
-            this.chkCustomMethodExt.TabIndex = 0;
-            this.chkCustomMethodExt.Text = "Conversão customizada";
-            this.chkCustomMethodExt.UseVisualStyleBackColor = true;
-            this.chkCustomMethodExt.CheckedChanged += new System.EventHandler(this.chkCustomMethodExt_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(75, 71);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(144, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Método de extensão - Ex. To";
-            // 
-            // txtMethodExtension
-            // 
-            this.txtMethodExtension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMethodExtension.Location = new System.Drawing.Point(78, 87);
-            this.txtMethodExtension.Name = "txtMethodExtension";
-            this.txtMethodExtension.Size = new System.Drawing.Size(494, 20);
-            this.txtMethodExtension.TabIndex = 2;
+            this.txtServer.Location = new System.Drawing.Point(79, 26);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Size = new System.Drawing.Size(494, 20);
+            this.txtServer.TabIndex = 6;
             // 
-            // chkDotNet
+            // txtDatabase
             // 
-            this.chkDotNet.AutoSize = true;
-            this.chkDotNet.Enabled = false;
-            this.chkDotNet.Location = new System.Drawing.Point(21, 26);
-            this.chkDotNet.Name = "chkDotNet";
-            this.chkDotNet.Size = new System.Drawing.Size(88, 17);
-            this.chkDotNet.TabIndex = 3;
-            this.chkDotNet.Text = "Coversão C#";
-            this.chkDotNet.UseVisualStyleBackColor = true;
+            this.txtDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDatabase.Location = new System.Drawing.Point(79, 106);
+            this.txtDatabase.Name = "txtDatabase";
+            this.txtDatabase.Size = new System.Drawing.Size(494, 20);
+            this.txtDatabase.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Servidor*";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPassword.Location = new System.Drawing.Point(79, 78);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(494, 20);
+            this.txtPassword.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Login*";
+            // 
+            // txtLogin
+            // 
+            this.txtLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogin.Location = new System.Drawing.Point(79, 52);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(494, 20);
+            this.txtLogin.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Senha*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Banco*";
+            // 
+            // cmdOk
+            // 
+            this.cmdOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmdOk.Location = new System.Drawing.Point(14, 402);
+            this.cmdOk.Name = "cmdOk";
+            this.cmdOk.Size = new System.Drawing.Size(75, 23);
+            this.cmdOk.TabIndex = 5;
+            this.cmdOk.Text = "OK";
+            this.cmdOk.UseVisualStyleBackColor = true;
+            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
             // 
             // DataTableForm
             // 
@@ -361,10 +361,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPageConfiuration.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -395,7 +395,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkDotNet;
         private System.Windows.Forms.TextBox txtMethodExtension;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbExtensionMethod;
         private System.Windows.Forms.CheckBox chkCustomMethodExt;
         private System.Windows.Forms.GroupBox groupBox2;
     }

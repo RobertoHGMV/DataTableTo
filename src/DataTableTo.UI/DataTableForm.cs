@@ -44,7 +44,7 @@ namespace DataTableTo.UI
             txtDatabase.Text = _userData.Database;
             txtMethodExtension.Text = _userData.MethodExtension;
             chkCustomMethodExt.Checked = _userData.CustomMehtodExtension;
-            SetChkDotNet();
+            SetContols();
         }
 
         private void FillResults()
@@ -54,9 +54,11 @@ namespace DataTableTo.UI
             listResult.DataSource = _userData.Results;
         }
 
-        private void SetChkDotNet()
+        private void SetContols()
         {
             chkDotNet.Checked = !chkCustomMethodExt.Checked;
+            lbExtensionMethod.Visible = chkCustomMethodExt.Checked;
+            txtMethodExtension.Visible = chkCustomMethodExt.Checked;
         }
 
         private void btnResults_Click(object sender, EventArgs e)
@@ -87,7 +89,7 @@ namespace DataTableTo.UI
         {
             try
             {
-                SetChkDotNet();
+                SetContols();
             }
             catch (Exception ex)
             {
