@@ -34,12 +34,6 @@ namespace DataTableTo.Domain.Model
         {
             if (string.IsNullOrEmpty(TableName))
                 throw new Exception("Nome da tabela não informado");
-
-            if (string.IsNullOrEmpty(ColumnPrefix))
-                throw new Exception("Prefix da coluna não informado");
-
-            if (string.IsNullOrEmpty(ColumnSufix))
-                throw new Exception("Sufixo da coluna não informado");
         }
 
         public void ValidateConfiguration()

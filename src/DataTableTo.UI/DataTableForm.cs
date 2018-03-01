@@ -30,6 +30,8 @@ namespace DataTableTo.UI
             _userData.Login = txtLogin.Text;
             _userData.Password = txtPassword.Text;
             _userData.Database = txtDatabase.Text;
+            _userData.CustomMehtodExtension = chkCustomMethodExt.Checked;
+            _userData.MethodExtension = txtMethodExtension.Text;
 
             _userData.TableName = txtTableName.Text;
             _userData.ColumnPrefix = txtColumnPrefix.Text;
