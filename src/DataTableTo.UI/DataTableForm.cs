@@ -2,12 +2,16 @@
 using DataTableTo.Domain.Model;
 using DataTableTo.Infra.Repositories;
 using System.Windows.Forms;
+using DataTableTo.Domain.Services;
+using DataTableTo.Domain.Model.FromToCreation.DotNetPatern;
+using System.Text;
 
 namespace DataTableTo.UI
 {
     public partial class DataTableForm : Form
     {
         private readonly IUserDataRepository _repository;
+        private readonly IFromToService _service;
         private UserData _userData;
 
         public DataTableForm()
@@ -15,6 +19,7 @@ namespace DataTableTo.UI
             InitializeComponent();
 
             _repository = new UserDataRepository();
+            _service = new FromToService();
             _userData = new UserData();
             FillControls();
         }
@@ -34,12 +39,14 @@ namespace DataTableTo.UI
             _userData.MethodExtension = txtMethodExtension.Text;
 
             _userData.TableName = txtTableName.Text;
+            _userData.RowName = txtRowName.Text;
             _userData.ColumnPrefix = txtColumnPrefix.Text;
             _userData.ColumnSufix = txtColumnSufix.Text;
         }
 
         private void FillControls()
         {
+            listResult.DataSource = _userData.Results;
             txtServer.Text = _userData.Server;
             txtLogin.Text = _userData.Login;
             txtPassword.Text = _userData.Password;
@@ -52,7 +59,9 @@ namespace DataTableTo.UI
         private void FillResults()
         {
             FillClass();
-            _repository.FillResults(_userData);
+            _repository.FillTableData(_userData);
+            _service.CreateFromTo(new CreatorFromToCustom(), _userData);
+            _service.CreateFromTo(new CreatorFromToDotNet(), _userData);
             listResult.DataSource = _userData.Results;
         }
 
@@ -61,6 +70,21 @@ namespace DataTableTo.UI
             chkDotNet.Checked = !chkCustomMethodExt.Checked;
             lbExtensionMethod.Visible = chkCustomMethodExt.Checked;
             txtMethodExtension.Visible = chkCustomMethodExt.Checked;
+        }
+
+        private void Copy()
+        {
+            Clipboard.SetText(listResult.Text);
+        }
+
+        private void CopyAll()
+        {
+            var sb = new StringBuilder();
+
+            foreach (string item in listResult.Items)
+                sb.AppendLine(item);
+
+            Clipboard.SetText(sb.ToString());
         }
 
         private void btnResults_Click(object sender, EventArgs e)
@@ -92,6 +116,30 @@ namespace DataTableTo.UI
             try
             {
                 SetContols();
+            }
+            catch (Exception ex)
+            {
+                MessageError(ex);
+            }
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Copy();
+            }
+            catch (Exception ex)
+            {
+                MessageError(ex);
+            }
+        }
+
+        private void btnCopyAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CopyAll();
             }
             catch (Exception ex)
             {

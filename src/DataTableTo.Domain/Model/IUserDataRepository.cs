@@ -2,6 +2,6 @@
 {
     public interface IUserDataRepository
     {
-        void FillResults(UserData dataTable);
+        void FillTableData(UserData dt);
     }
 }

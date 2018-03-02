@@ -40,9 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\FromToCreation\DotNetPatern\CreatorFromToDotNet.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\FromToCustomBool.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\FromToCustomDecimal.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\FromToCustomDateTime.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\FromToCustomInt.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\FromToCustomString.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\IFromToCustom.cs" />
+    <Compile Include="Model\FromToCreation\CustomPatern\CreatorFromToCustom.cs" />
+    <Compile Include="Model\FromToCreation\DotNetPatern\FromToDotNetBool.cs" />
+    <Compile Include="Model\FromToCreation\DotNetPatern\FromToDotNetDateTime.cs" />
+    <Compile Include="Model\FromToCreation\DotNetPatern\FromToDotNetDecimal.cs" />
+    <Compile Include="Model\FromToCreation\DotNetPatern\FromToDotNetInt.cs" />
+    <Compile Include="Model\FromToCreation\DotNetPatern\FromToDotNetString.cs" />
+    <Compile Include="Model\FromToCreation\DotNetPatern\IFromToDotNet.cs" />
+    <Compile Include="Model\FromToCreation\IFromToType.cs" />
+    <Compile Include="Model\TableData.cs" />
     <Compile Include="Model\UserData.cs" />
     <Compile Include="Model\IUserDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FromToService.cs" />
+    <Compile Include="Services\IFromToService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

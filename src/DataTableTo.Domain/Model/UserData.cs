@@ -7,10 +7,12 @@ namespace DataTableTo.Domain.Model
     {
         public UserData()
         {
-            Results = new List<string>();
+            TableData = new List<TableData>();
         }
 
         public string TableName { get; set; }
+
+        public string RowName { get; set; }
 
         public string ColumnPrefix { get; set; }
 
@@ -30,10 +32,15 @@ namespace DataTableTo.Domain.Model
 
         public IEnumerable<string> Results { get; set; }
 
+        public IEnumerable<TableData> TableData { get; set; }
+
         public void ValidateParamsToFillResults()
         {
             if (string.IsNullOrEmpty(TableName))
                 throw new Exception("Nome da tabela não informado");
+
+            if (string.IsNullOrEmpty(RowName))
+                throw new Exception("Nome da linha não informado");
         }
 
         public void ValidateConfiguration()

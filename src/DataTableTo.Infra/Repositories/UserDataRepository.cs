@@ -8,43 +8,8 @@ namespace DataTableTo.Infra.Repositories
 {
     public class UserDataRepository : IUserDataRepository
     {
-        public void FillResults(UserData dt)
-        {
-            dt.ValidateParamsToFillResults();
-            dt.ValidateConfiguration();
-
-            using (var conn = new SqlConnection())
-            {
-                conn.ConnectionString = $"Server={dt.Server};Database={dt.Database};User={dt.Login};Password={dt.Password}";
-
-                var queryToExec = !dt.CustomMehtodExtension
-                    ? GetFormatedFromTo(dt.TableName, dt.ColumnPrefix, dt.ColumnSufix)
-                    : GetFormatedFromTo(dt.TableName, dt.ColumnPrefix, dt.ColumnSufix, dt.MethodExtension);
-
-                var cmd = new SqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = queryToExec;
-                conn.Open();
-
-                var data = cmd.ExecuteReader();
-
-                var results = new List<string>();
-                while (data.Read())
-                {
-                    if (DBNull.Value.Equals(data["result"]))
-                        continue;
-
-                    var result = data["result"].ToString();
-                    results.Add(result);
-                }
-
-                dt.Results = results;
-
-                data.Close();
-                conn.Close();
-            }
-        }
+        private const string COLUMN_NAME = "COLUMN_NAME";
+        private const string DATA_TYPE = "DATA_TYPE";
 
         private string GetFormatedFromTo(string tableName, string prefix, string sufix)
         {
@@ -104,6 +69,53 @@ namespace DataTableTo.Infra.Repositories
                                           			 CHAR(13) + Char(10) ,' '), CHAR(10), '')
                                           FROM INFORMATION_SCHEMA.COLUMNS
                                           WHERE TABLE_NAME = ''+ @tableName +''";
+        }
+
+        public void FillTableData(UserData dt)
+        {
+            using (var conn = new SqlConnection())
+            {
+                conn.ConnectionString = $"Server={dt.Server};Database={dt.Database};User={dt.Login};Password={dt.Password}";
+
+                var cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = GetQueryFieldsName(dt.TableName);
+                conn.Open();
+
+                var data = cmd.ExecuteReader();
+                var tbData = new List<TableData>();
+
+                while (data.Read())
+                {
+                    if (DBNull.Value.Equals(data[COLUMN_NAME]) || DBNull.Value.Equals(data[DATA_TYPE]))
+                        continue;
+
+                    var tableData = new TableData
+                    {
+                        ColumnName = data[COLUMN_NAME].ToString(),
+                        ColumnType = data[DATA_TYPE].ToString()
+                    };
+
+                    tbData.Add(tableData);
+                }
+
+                dt.TableData = tbData;
+
+                data.Close();
+                conn.Close();
+            }
+        }
+
+        private string GetQueryFieldsName(string tableName)
+        {
+            return $@"
+                    DECLARE @tableName NVARCHAR(200)
+                    SET @tableName = '{tableName}'
+                    
+                    SELECT COLUMN_NAME, DATA_TYPE
+                    FROM INFORMATION_SCHEMA.COLUMNS
+                    WHERE TABLE_NAME = ''+ @tableName +''";
         }
     }
 }
