@@ -12,6 +12,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             sb.Append("if (!DBNull.Value.Equals(");
             fromToService.FillDataRow(sb, userData, data);
             sb.Append(")) ");
+            sb.Append("\n");
+            sb.Append("    ");
             sb.Append(data.ColumnName);
             sb.Append(" = ");
             fromToService.FillDataRow(sb, userData, data);

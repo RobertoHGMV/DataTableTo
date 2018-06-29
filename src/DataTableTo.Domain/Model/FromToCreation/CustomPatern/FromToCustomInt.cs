@@ -10,11 +10,12 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             if (!SameType(data.ColumnType)) return;
 
             sb.Append(data.ColumnName);
-            sb.Append(" = ");
+            sb.Append(" = !DBNull.Value.Equals(");
             fromToService.FillDataRow(sb, userData, data);
-            sb.Append("?.");
+            sb.Append(") ? ");
+            fromToService.FillDataRow(sb, userData, data);
             sb.Append(userData.MethodExtension);
-            sb.Append("<int>() ?? 0;");
+            sb.Append("<int>() : 0;");
         }
 
         public bool SameType(string type) => "int".Equals(type);
