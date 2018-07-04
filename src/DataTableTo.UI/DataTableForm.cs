@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using DataTableTo.Domain.Services;
 using DataTableTo.Domain.Model.FromToCreation.DotNetPatern;
 using System.Text;
+using DataTableTo.Domain.Model.FromToCreation.GenericPatern;
 
 namespace DataTableTo.UI
 {
@@ -37,6 +38,7 @@ namespace DataTableTo.UI
             _userData.Database = txtDatabase.Text;
             _userData.CustomMehtodExtension = chkCustomMethodExt.Checked;
             _userData.MethodExtension = txtMethodExtension.Text;
+            _userData.WithoutValidation = chkValidation.Checked;
 
             _userData.TableName = txtTableName.Text;
             _userData.RowName = txtRowName.Text;
@@ -53,6 +55,7 @@ namespace DataTableTo.UI
             txtDatabase.Text = _userData.Database;
             txtMethodExtension.Text = _userData.MethodExtension;
             chkCustomMethodExt.Checked = _userData.CustomMehtodExtension;
+            chkValidation.Checked = _userData.WithoutValidation;
             SetContols();
         }
 
@@ -62,6 +65,7 @@ namespace DataTableTo.UI
             _repository.FillTableData(_userData);
             _service.CreateFromTo(new CreatorFromToCustom(), _userData);
             _service.CreateFromTo(new CreatorFromToDotNet(), _userData);
+            _service.CreateFromTo(new CreatorFromTo(), _userData);
             listResult.DataSource = _userData.Results;
         }
 

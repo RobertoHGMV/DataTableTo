@@ -10,6 +10,8 @@ namespace DataTableTo.Domain.Model
             TableData = new List<TableData>();
         }
 
+        public string ObjectName { get; set; }
+
         public string TableName { get; set; }
 
         public string RowName { get; set; }
@@ -29,6 +31,8 @@ namespace DataTableTo.Domain.Model
         public string Password { get; set; }
 
         public string Database { get; set; }
+
+        public bool WithoutValidation { get; set; }
 
         public IEnumerable<string> Results { get; set; }
 

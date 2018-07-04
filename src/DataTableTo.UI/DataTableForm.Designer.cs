@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataTableForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkValidation = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtRowName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtColumnSufix = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnResults = new System.Windows.Forms.Button();
@@ -55,9 +60,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmdOk = new System.Windows.Forms.Button();
-            this.txtRowName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnCopyAll = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -78,7 +80,7 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(623, 447);
+            this.tabControl1.Size = new System.Drawing.Size(648, 447);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageProcess
@@ -88,7 +90,7 @@
             this.tabPageProcess.Location = new System.Drawing.Point(4, 22);
             this.tabPageProcess.Name = "tabPageProcess";
             this.tabPageProcess.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProcess.Size = new System.Drawing.Size(615, 421);
+            this.tabPageProcess.Size = new System.Drawing.Size(640, 421);
             this.tabPageProcess.TabIndex = 0;
             this.tabPageProcess.Text = "De Para";
             this.tabPageProcess.UseVisualStyleBackColor = true;
@@ -97,6 +99,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkValidation);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtRowName);
             this.groupBox1.Controls.Add(this.label8);
@@ -109,9 +112,47 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(8, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(599, 128);
+            this.groupBox1.Size = new System.Drawing.Size(624, 128);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
+            // 
+            // chkValidation
+            // 
+            this.chkValidation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkValidation.AutoSize = true;
+            this.chkValidation.Location = new System.Drawing.Point(522, 71);
+            this.chkValidation.Name = "chkValidation";
+            this.chkValidation.Size = new System.Drawing.Size(96, 17);
+            this.chkValidation.TabIndex = 9;
+            this.chkValidation.Text = "Sem validação";
+            this.chkValidation.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(519, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Ex: row";
+            // 
+            // txtRowName
+            // 
+            this.txtRowName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRowName.Location = new System.Drawing.Point(117, 44);
+            this.txtRowName.Name = "txtRowName";
+            this.txtRowName.Size = new System.Drawing.Size(392, 20);
+            this.txtRowName.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Nome da Linha*";
             // 
             // txtColumnSufix
             // 
@@ -119,7 +160,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtColumnSufix.Location = new System.Drawing.Point(117, 94);
             this.txtColumnSufix.Name = "txtColumnSufix";
-            this.txtColumnSufix.Size = new System.Drawing.Size(374, 20);
+            this.txtColumnSufix.Size = new System.Drawing.Size(392, 20);
             this.txtColumnSufix.TabIndex = 4;
             // 
             // label7
@@ -134,7 +175,7 @@
             // btnResults
             // 
             this.btnResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResults.Location = new System.Drawing.Point(506, 18);
+            this.btnResults.Location = new System.Drawing.Point(522, 18);
             this.btnResults.Name = "btnResults";
             this.btnResults.Size = new System.Drawing.Size(75, 23);
             this.btnResults.TabIndex = 5;
@@ -148,7 +189,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTableName.Location = new System.Drawing.Point(117, 19);
             this.txtTableName.Name = "txtTableName";
-            this.txtTableName.Size = new System.Drawing.Size(374, 20);
+            this.txtTableName.Size = new System.Drawing.Size(392, 20);
             this.txtTableName.TabIndex = 1;
             // 
             // label1
@@ -166,7 +207,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtColumnPrefix.Location = new System.Drawing.Point(117, 69);
             this.txtColumnPrefix.Name = "txtColumnPrefix";
-            this.txtColumnPrefix.Size = new System.Drawing.Size(374, 20);
+            this.txtColumnPrefix.Size = new System.Drawing.Size(392, 20);
             this.txtColumnPrefix.TabIndex = 3;
             // 
             // label2
@@ -186,7 +227,7 @@
             this.listResult.FormattingEnabled = true;
             this.listResult.Location = new System.Drawing.Point(7, 141);
             this.listResult.Name = "listResult";
-            this.listResult.Size = new System.Drawing.Size(600, 277);
+            this.listResult.Size = new System.Drawing.Size(625, 277);
             this.listResult.TabIndex = 7;
             // 
             // tabPageConfiuration
@@ -196,7 +237,7 @@
             this.tabPageConfiuration.Location = new System.Drawing.Point(4, 22);
             this.tabPageConfiuration.Name = "tabPageConfiuration";
             this.tabPageConfiuration.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConfiuration.Size = new System.Drawing.Size(615, 421);
+            this.tabPageConfiuration.Size = new System.Drawing.Size(640, 421);
             this.tabPageConfiuration.TabIndex = 1;
             this.tabPageConfiuration.Text = "Configuração";
             this.tabPageConfiuration.UseVisualStyleBackColor = true;
@@ -355,37 +396,10 @@
             this.cmdOk.UseVisualStyleBackColor = true;
             this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
             // 
-            // txtRowName
-            // 
-            this.txtRowName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRowName.Location = new System.Drawing.Point(117, 44);
-            this.txtRowName.Name = "txtRowName";
-            this.txtRowName.Size = new System.Drawing.Size(374, 20);
-            this.txtRowName.TabIndex = 2;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Nome da Linha*";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(506, 46);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Ex: row";
-            // 
             // btnCopy
             // 
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopy.Location = new System.Drawing.Point(392, 455);
+            this.btnCopy.Location = new System.Drawing.Point(417, 455);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(125, 23);
             this.btnCopy.TabIndex = 6;
@@ -396,7 +410,7 @@
             // btnCopyAll
             // 
             this.btnCopyAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyAll.Location = new System.Drawing.Point(523, 455);
+            this.btnCopyAll.Location = new System.Drawing.Point(548, 455);
             this.btnCopyAll.Name = "btnCopyAll";
             this.btnCopyAll.Size = new System.Drawing.Size(90, 23);
             this.btnCopyAll.TabIndex = 7;
@@ -408,11 +422,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 492);
+            this.ClientSize = new System.Drawing.Size(649, 492);
             this.Controls.Add(this.btnCopyAll);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.cmdOk);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DataTableForm";
             this.Text = "Data Table Para";
             this.tabControl1.ResumeLayout(false);
@@ -462,5 +477,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnCopyAll;
+        private System.Windows.Forms.CheckBox chkValidation;
     }
 }
