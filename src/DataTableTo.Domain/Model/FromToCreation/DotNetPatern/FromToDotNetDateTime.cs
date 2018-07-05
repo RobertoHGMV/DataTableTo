@@ -14,6 +14,7 @@ namespace DataTableTo.Domain.Model.FromToCreation.DotNetPatern
             sb.Append(")) ");
             sb.Append("\n");
             sb.Append("    ");
+            sb.Append(userData.ObjectName);
             sb.Append(data.ColumnName);
             sb.Append(" = ");
             sb.Append("Convert.ToDateTime(");

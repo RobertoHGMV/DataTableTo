@@ -41,6 +41,7 @@ namespace DataTableTo.UI
             _userData.WithoutValidation = chkValidation.Checked;
 
             _userData.TableName = txtTableName.Text;
+            _userData.ObjectName = txtObjectName.Text;
             _userData.RowName = txtRowName.Text;
             _userData.ColumnPrefix = txtColumnPrefix.Text;
             _userData.ColumnSufix = txtColumnSufix.Text;
@@ -55,7 +56,6 @@ namespace DataTableTo.UI
             txtDatabase.Text = _userData.Database;
             txtMethodExtension.Text = _userData.MethodExtension;
             chkCustomMethodExt.Checked = _userData.CustomMehtodExtension;
-            chkValidation.Checked = _userData.WithoutValidation;
             SetContols();
         }
 

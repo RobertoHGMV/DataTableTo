@@ -15,9 +15,6 @@ namespace DataTableTo.Domain.Model.FromToCreation.DotNetPatern
             {
                 var sb = new StringBuilder();
 
-                if (!string.IsNullOrEmpty(userData.ObjectName))
-                    sb.Append($"{userData.ObjectName}.");
-
                 new FromToDotNetBool().CreateFromTo(fromToService, sb, userData, data);
                 new FromToDotNetDateTime().CreateFromTo(fromToService, sb, userData, data);
                 new FromToDotNetDecimal().CreateFromTo(fromToService, sb, userData, data);

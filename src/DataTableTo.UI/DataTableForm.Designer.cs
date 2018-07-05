@@ -62,6 +62,8 @@
             this.cmdOk = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnCopyAll = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtObjectName = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageProcess.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,7 +82,7 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(648, 447);
+            this.tabControl1.Size = new System.Drawing.Size(648, 458);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageProcess
@@ -90,7 +92,7 @@
             this.tabPageProcess.Location = new System.Drawing.Point(4, 22);
             this.tabPageProcess.Name = "tabPageProcess";
             this.tabPageProcess.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProcess.Size = new System.Drawing.Size(640, 421);
+            this.tabPageProcess.Size = new System.Drawing.Size(640, 432);
             this.tabPageProcess.TabIndex = 0;
             this.tabPageProcess.Text = "De Para";
             this.tabPageProcess.UseVisualStyleBackColor = true;
@@ -99,6 +101,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtObjectName);
             this.groupBox1.Controls.Add(this.chkValidation);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtRowName);
@@ -112,7 +116,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(8, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(624, 128);
+            this.groupBox1.Size = new System.Drawing.Size(624, 142);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -120,17 +124,17 @@
             // 
             this.chkValidation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkValidation.AutoSize = true;
-            this.chkValidation.Location = new System.Drawing.Point(522, 71);
+            this.chkValidation.Location = new System.Drawing.Point(522, 38);
             this.chkValidation.Name = "chkValidation";
             this.chkValidation.Size = new System.Drawing.Size(96, 17);
-            this.chkValidation.TabIndex = 9;
+            this.chkValidation.TabIndex = 6;
             this.chkValidation.Text = "Sem validação";
             this.chkValidation.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(519, 48);
+            this.label9.Location = new System.Drawing.Point(519, 65);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 8;
@@ -140,15 +144,15 @@
             // 
             this.txtRowName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRowName.Location = new System.Drawing.Point(117, 44);
+            this.txtRowName.Location = new System.Drawing.Point(117, 61);
             this.txtRowName.Name = "txtRowName";
             this.txtRowName.Size = new System.Drawing.Size(392, 20);
-            this.txtRowName.TabIndex = 2;
+            this.txtRowName.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 48);
+            this.label8.Location = new System.Drawing.Point(12, 65);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 13);
             this.label8.TabIndex = 7;
@@ -158,15 +162,15 @@
             // 
             this.txtColumnSufix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtColumnSufix.Location = new System.Drawing.Point(117, 94);
+            this.txtColumnSufix.Location = new System.Drawing.Point(117, 111);
             this.txtColumnSufix.Name = "txtColumnSufix";
             this.txtColumnSufix.Size = new System.Drawing.Size(392, 20);
-            this.txtColumnSufix.TabIndex = 4;
+            this.txtColumnSufix.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 98);
+            this.label7.Location = new System.Drawing.Point(12, 115);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 13);
             this.label7.TabIndex = 5;
@@ -175,10 +179,10 @@
             // btnResults
             // 
             this.btnResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResults.Location = new System.Drawing.Point(522, 18);
+            this.btnResults.Location = new System.Drawing.Point(522, 9);
             this.btnResults.Name = "btnResults";
             this.btnResults.Size = new System.Drawing.Size(75, 23);
-            this.btnResults.TabIndex = 5;
+            this.btnResults.TabIndex = 7;
             this.btnResults.Text = "Executar";
             this.btnResults.UseVisualStyleBackColor = true;
             this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
@@ -187,7 +191,7 @@
             // 
             this.txtTableName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTableName.Location = new System.Drawing.Point(117, 19);
+            this.txtTableName.Location = new System.Drawing.Point(117, 11);
             this.txtTableName.Name = "txtTableName";
             this.txtTableName.Size = new System.Drawing.Size(392, 20);
             this.txtTableName.TabIndex = 1;
@@ -195,7 +199,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 23);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 1;
@@ -205,15 +209,15 @@
             // 
             this.txtColumnPrefix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtColumnPrefix.Location = new System.Drawing.Point(117, 69);
+            this.txtColumnPrefix.Location = new System.Drawing.Point(117, 86);
             this.txtColumnPrefix.Name = "txtColumnPrefix";
             this.txtColumnPrefix.Size = new System.Drawing.Size(392, 20);
-            this.txtColumnPrefix.TabIndex = 3;
+            this.txtColumnPrefix.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Location = new System.Drawing.Point(12, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 2;
@@ -225,9 +229,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listResult.FormattingEnabled = true;
-            this.listResult.Location = new System.Drawing.Point(7, 141);
+            this.listResult.Location = new System.Drawing.Point(7, 154);
             this.listResult.Name = "listResult";
-            this.listResult.Size = new System.Drawing.Size(625, 277);
+            this.listResult.Size = new System.Drawing.Size(625, 264);
             this.listResult.TabIndex = 7;
             // 
             // tabPageConfiuration
@@ -273,7 +277,7 @@
             this.txtMethodExtension.Location = new System.Drawing.Point(78, 87);
             this.txtMethodExtension.Name = "txtMethodExtension";
             this.txtMethodExtension.Size = new System.Drawing.Size(494, 20);
-            this.txtMethodExtension.TabIndex = 15;
+            this.txtMethodExtension.TabIndex = 16;
             // 
             // lbExtensionMethod
             // 
@@ -290,7 +294,7 @@
             this.chkCustomMethodExt.Location = new System.Drawing.Point(21, 49);
             this.chkCustomMethodExt.Name = "chkCustomMethodExt";
             this.chkCustomMethodExt.Size = new System.Drawing.Size(139, 17);
-            this.chkCustomMethodExt.TabIndex = 14;
+            this.chkCustomMethodExt.TabIndex = 15;
             this.chkCustomMethodExt.Text = "Conversão customizada";
             this.chkCustomMethodExt.UseVisualStyleBackColor = true;
             this.chkCustomMethodExt.CheckedChanged += new System.EventHandler(this.chkCustomMethodExt_CheckedChanged);
@@ -319,7 +323,7 @@
             this.txtServer.Location = new System.Drawing.Point(79, 26);
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(494, 20);
-            this.txtServer.TabIndex = 10;
+            this.txtServer.TabIndex = 11;
             // 
             // txtDatabase
             // 
@@ -328,7 +332,7 @@
             this.txtDatabase.Location = new System.Drawing.Point(79, 106);
             this.txtDatabase.Name = "txtDatabase";
             this.txtDatabase.Size = new System.Drawing.Size(494, 20);
-            this.txtDatabase.TabIndex = 13;
+            this.txtDatabase.TabIndex = 14;
             // 
             // label3
             // 
@@ -347,7 +351,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(494, 20);
-            this.txtPassword.TabIndex = 12;
+            this.txtPassword.TabIndex = 13;
             // 
             // label4
             // 
@@ -365,7 +369,7 @@
             this.txtLogin.Location = new System.Drawing.Point(79, 52);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(494, 20);
-            this.txtLogin.TabIndex = 11;
+            this.txtLogin.TabIndex = 12;
             // 
             // label5
             // 
@@ -388,10 +392,10 @@
             // cmdOk
             // 
             this.cmdOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cmdOk.Location = new System.Drawing.Point(14, 455);
+            this.cmdOk.Location = new System.Drawing.Point(14, 466);
             this.cmdOk.Name = "cmdOk";
             this.cmdOk.Size = new System.Drawing.Size(75, 23);
-            this.cmdOk.TabIndex = 8;
+            this.cmdOk.TabIndex = 10;
             this.cmdOk.Text = "OK";
             this.cmdOk.UseVisualStyleBackColor = true;
             this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
@@ -399,10 +403,10 @@
             // btnCopy
             // 
             this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopy.Location = new System.Drawing.Point(417, 455);
+            this.btnCopy.Location = new System.Drawing.Point(417, 466);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(125, 23);
-            this.btnCopy.TabIndex = 6;
+            this.btnCopy.TabIndex = 8;
             this.btnCopy.Text = "Copiar Selecionado";
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -410,19 +414,37 @@
             // btnCopyAll
             // 
             this.btnCopyAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyAll.Location = new System.Drawing.Point(548, 455);
+            this.btnCopyAll.Location = new System.Drawing.Point(548, 466);
             this.btnCopyAll.Name = "btnCopyAll";
             this.btnCopyAll.Size = new System.Drawing.Size(90, 23);
-            this.btnCopyAll.TabIndex = 7;
+            this.btnCopyAll.TabIndex = 9;
             this.btnCopyAll.Text = "Copiar Tudo";
             this.btnCopyAll.UseVisualStyleBackColor = true;
             this.btnCopyAll.Click += new System.EventHandler(this.btnCopyAll_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Nome do objeto";
+            // 
+            // txtObjectName
+            // 
+            this.txtObjectName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObjectName.Location = new System.Drawing.Point(117, 36);
+            this.txtObjectName.Name = "txtObjectName";
+            this.txtObjectName.Size = new System.Drawing.Size(392, 20);
+            this.txtObjectName.TabIndex = 2;
             // 
             // DataTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 492);
+            this.ClientSize = new System.Drawing.Size(649, 503);
             this.Controls.Add(this.btnCopyAll);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.cmdOk);
@@ -478,5 +500,7 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnCopyAll;
         private System.Windows.Forms.CheckBox chkValidation;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtObjectName;
     }
 }

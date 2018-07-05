@@ -15,9 +15,6 @@ namespace DataTableTo.Domain.Model.FromToCreation.GenericPatern
             {
                 var sb = new StringBuilder();
 
-                if (!string.IsNullOrEmpty(userData.ObjectName))
-                    sb.Append($"{userData.ObjectName}.");
-
                 new FromToGeneric().CreateFromTo(fromToService, sb, userData, data);
                 fromToList.Add(sb.ToString());
             }

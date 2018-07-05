@@ -7,6 +7,7 @@ namespace DataTableTo.Domain.Model.FromToCreation.GenericPatern
     {
         public void CreateFromTo(IFromToService fromToService, StringBuilder sb, UserData userData, TableData data)
         {
+            sb.Append(userData.ObjectName);
             sb.Append(data.ColumnName);
             sb.Append(" = ");
             fromToService.FillRow(sb, userData, data);

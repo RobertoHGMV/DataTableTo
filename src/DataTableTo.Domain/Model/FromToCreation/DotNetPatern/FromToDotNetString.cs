@@ -9,6 +9,7 @@ namespace DataTableTo.Domain.Model.FromToCreation.DotNetPatern
         {
             if (!SameType(data.ColumnType)) return;
 
+            sb.Append(userData.ObjectName);
             sb.Append(data.ColumnName);
             sb.Append(" = ");
             fromToService.FillDataRow(sb, userData, data);
