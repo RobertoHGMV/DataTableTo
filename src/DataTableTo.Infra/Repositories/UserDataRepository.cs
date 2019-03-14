@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using DataTableTo.Domain.Model;
 
 namespace DataTableTo.Infra.Repositories
@@ -15,11 +15,12 @@ namespace DataTableTo.Infra.Repositories
         {
             using (var conn = new SqlConnection())
             {
-                conn.ConnectionString = $"Server={dt.Server};Database={dt.Database};User={dt.Login};Password={dt.Password}";
+                //conn.ConnectionString = $"Server={dt.Server};Database={dt.Database};User={dt.Login};Password={dt.Password}";
+                conn.ConnectionString = GetConnString(dt);
 
                 var cmd = new SqlCommand();
                 cmd.Connection = conn;
-                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandType = CommandType.Text;
                 cmd.CommandText = GetQueryFieldsName(dt.TableName);
                 conn.Open();
 
@@ -56,6 +57,31 @@ namespace DataTableTo.Infra.Repositories
                     SELECT COLUMN_NAME, DATA_TYPE
                     FROM INFORMATION_SCHEMA.COLUMNS
                     WHERE TABLE_NAME = ''+ @tableName +''";
+        }
+
+        private string GetConnString(UserData userData)
+        {
+            var connStr = new SqlConnectionStringBuilder();
+            connStr.DataSource = userData.Server;
+            connStr.InitialCatalog = userData.Database;
+            connStr.UserID = userData.Login;
+            connStr.Password = userData.Password;
+            return connStr.ToString();
+        }
+
+        public bool IsConnectedSqlServer(UserData userData)
+        {
+            bool connected;
+
+            using (var conn = new SqlConnection())
+            {
+                conn.ConnectionString = GetConnString(userData);
+                conn.Open();
+                connected = ConnectionState.Open == conn.State;
+                conn.Close();
+            }
+
+            return connected;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             fromToService.FillDataRow(sb, userData, data);
             sb.Append(") ? ");
             fromToService.FillDataRow(sb, userData, data);
+            sb.Append(".");
             sb.Append(userData.MethodExtension);
             sb.Append("<int>() : 0;");
         }

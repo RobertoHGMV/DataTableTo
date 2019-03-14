@@ -76,6 +76,13 @@
     <Compile Include="Model\FromToCreation\GenericPatern\FromToGeneric.cs" />
     <Compile Include="Model\FromToCreation\GenericPatern\IFromToGeneric.cs" />
     <Compile Include="Model\FromToCreation\IFromToType.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\CreatorFromToMethod.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\FromToMethodBool.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\FromToMethodDateTime.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\FromToMethodDecimal.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\FromToMethodInt.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\FromToMethodString.cs" />
+    <Compile Include="Model\FromToCreation\MethodPatern\IFromToMethod.cs" />
     <Compile Include="Model\TableData.cs" />
     <Compile Include="Model\UserData.cs" />
     <Compile Include="Model\IUserDataRepository.cs" />

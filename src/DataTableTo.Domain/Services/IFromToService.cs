@@ -11,5 +11,7 @@ namespace DataTableTo.Domain.Services
         void FillDataRow(StringBuilder sb, UserData userData, TableData data);
 
         void FillRow(StringBuilder sb, UserData userData, TableData data);
+
+        string GetFullFieldName(UserData userData, TableData data);
     }
 }

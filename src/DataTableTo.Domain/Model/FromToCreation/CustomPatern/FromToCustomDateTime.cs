@@ -23,6 +23,6 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             sb.Append("<DateTime>();");
         }
 
-        public bool SameType(string type) => "datetime".Equals(type);
+        public bool SameType(string type) => "datetime".Equals(type) || "datetime2".Equals(type);
     }
 }

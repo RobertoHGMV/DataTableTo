@@ -5,6 +5,9 @@ namespace DataTableTo.Domain.Model
 {
     public class UserData
     {
+        public readonly string fieldParam = "@field";
+        public readonly string typeParam = "@type";
+
         public UserData()
         {
             TableData = new List<TableData>();
@@ -23,6 +26,10 @@ namespace DataTableTo.Domain.Model
         public bool CustomMehtodExtension { get; set; }
 
         public string MethodExtension { get; set; }
+
+        public bool CustomMethod { get; set; }
+
+        public string Method { get; set; }
 
         public string Server { get; set; }
 

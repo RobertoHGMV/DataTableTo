@@ -21,9 +21,12 @@ namespace DataTableTo.Domain.Services
 
         public void FillRow(StringBuilder sb, UserData userData, TableData data)
         {
-            sb.Append(userData.ColumnPrefix);
-            sb.Append(data.ColumnName);
-            sb.Append(userData.ColumnSufix);
+            sb.Append(GetFullFieldName(userData, data));
+        }
+
+        public string GetFullFieldName(UserData userData, TableData data)
+        {
+            return $"{userData.ColumnPrefix}{data.ColumnName}{userData.ColumnSufix}";
         }
     }
 }
