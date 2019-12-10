@@ -20,6 +20,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             sb.Append("<bool>();");
         }
 
-        public bool SameType(string type) => "bit".Equals(type);
+        public bool SameType(string type) => 
+            "bit".Equals(type)
+            || "boolean".Equals(type);
     }
 }

@@ -4,6 +4,7 @@ using DataTableTo.Domain.Model.FromToCreation.GenericPatern;
 using DataTableTo.Domain.Model.FromToCreation.MethodPatern;
 using DataTableTo.Domain.Services;
 using DataTableTo.Infra.Repositories;
+using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,21 +39,16 @@ namespace DataTableTo.MetroUI
         {
             chkCustomMethodExt.CheckedChanged += chkCustomMethodExt_CheckedChanged;
             chkCustomMethod.CheckedChanged += chkCustomMethod_CheckedChanged;
-            btnCopy.Click += btnCopy_Click;
-            btnCopyAll.Click += btnCopyAll_Click;
-            btnResults.Click += btnResults_Click;
-            btnConTest.Click += BtnConTest_Click;
-            cmdOk.Click += cmdOk_Click;
         }
 
         private void MessageSuccessfull(string message)
         {
-            MessageBox.Show(message, "Mensagem do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroMessageBox.Show(this, message, "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void MessageError(Exception ex)
         {
-            MessageBox.Show(ex.Message, "Mensagem do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MetroMessageBox.Show(this, ex.Message, "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void FillClass()
@@ -66,6 +62,8 @@ namespace DataTableTo.MetroUI
             _userData.CustomMethod = chkCustomMethod.Checked;
             _userData.Method = txtMethod.Text.Trim();
             _userData.WithoutValidation = chkValidation.Checked;
+            _userData.UseQuery = chkUseQuery.Checked;
+            _userData.UserQuery = txtUserQuery.Text;
 
             _userData.TableName = txtTableName.Text.Trim();
             _userData.ObjectName = !string.IsNullOrEmpty(txtObjectName.Text) ? txtObjectName.Text.Trim() + "." : string.Empty;
@@ -85,20 +83,48 @@ namespace DataTableTo.MetroUI
             chkCustomMethodExt.Checked = _userData.CustomMehtodExtension;
             txtMethod.Text = _userData.Method;
             chkCustomMethod.Checked = _userData.CustomMethod;
+            chkUseQuery.Checked = _userData.UseQuery;
+            txtUserQuery.Text = _userData.UserQuery;
             SetContolsCustomExtension();
             SetControlsMethod();
         }
 
         private void FillResults()
         {
+            FillClassAndValid();
+
+            if (_userData.UseQuery)
+                _repository.FillTableDataByDataTable(_userData);
+            else
+                _repository.FillTableData(_userData);
+
+            CreateFromTo();
+            listResult.DataSource = _userData.Results;
+        }
+
+        private void FillClassAndValid()
+        {
             FillClass();
-            _repository.FillTableData(_userData);
+            _userData.ValidateConfiguration();
+            _userData.ValidateParamsToFillResults();
+        }
+
+        private void CreateFromTo()
+        {
             _service.CreateFromTo(new CreatorFromToCustom(), _userData);
             _service.CreateFromTo(new CreatorFromToDotNet(), _userData);
             _service.CreateFromTo(new CreatorFromTo(), _userData);
             _service.CreateFromTo(new CreatorFromToMethod(), _userData);
-            listResult.DataSource = _userData.Results;
         }
+
+        #region ResultsReplace
+
+        private void ResultsReplace()
+        {
+
+        }
+
+        #endregion
 
         private void SetContolsCustomExtension()
         {
@@ -163,6 +189,18 @@ namespace DataTableTo.MetroUI
             }
         }
 
+        private void btnResultReplace_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ResultsReplace();
+            }
+            catch (Exception ex)
+            {
+                MessageError(ex);
+            }
+        }
+
         private void btnCopy_Click(object sender, EventArgs e)
         {
             try
@@ -192,6 +230,7 @@ namespace DataTableTo.MetroUI
             try
             {
                 FillClass();
+                _userData.ValidateConfiguration();
                 if (_repository.IsConnectedSqlServer(_userData))
                     MessageSuccessfull("Conexão realizada com sucesso!");
             }

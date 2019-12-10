@@ -18,6 +18,10 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             sb.Append("<string>();");
         }
 
-        public bool SameType(string type) => "nvarchar".Equals(type) || "varchar".Equals(type) || "nchar".Equals(type);
+        public bool SameType(string type) => 
+            "nvarchar".Equals(type) 
+            || "varchar".Equals(type) 
+            || "nchar".Equals(type)
+            || "string".Equals(type);
     }
 }

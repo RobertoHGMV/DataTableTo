@@ -12,21 +12,23 @@ namespace DataTableTo.Infra.Repositories
         const string DATA_TYPE = "DATA_TYPE";
         const string PARAMETER_TABLE_NAME = "@tableName";
 
-        public void FillTableData(UserData dt)
+        public void FillTableData(UserData userData)
         {
+            if (userData.UseQuery) return;
+
             using (var conn = new SqlConnection())
             {
-                conn.ConnectionString = GetConnString(dt);
+                conn.ConnectionString = GetConnString(userData);
 
+                var tbData = new List<TableData>();
                 var cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = GetQueryFieldsName();
-                cmd.Parameters.AddWithValue(PARAMETER_TABLE_NAME, dt.TableName);
+                cmd.Parameters.AddWithValue(PARAMETER_TABLE_NAME, userData.TableName);
                 conn.Open();
 
                 var data = cmd.ExecuteReader();
-                var tbData = new List<TableData>();
 
                 while (data.Read())
                 {
@@ -36,15 +38,56 @@ namespace DataTableTo.Infra.Repositories
                     var tableData = new TableData
                     {
                         ColumnName = data[COLUMN_NAME].ToString(),
-                        ColumnType = data[DATA_TYPE].ToString()
+                        ColumnType = data[DATA_TYPE].ToString().ToLower()
                     };
 
                     tbData.Add(tableData);
                 }
 
-                dt.TableData = tbData;
+                userData.TableData = tbData;
 
                 data.Close();
+                cmd.Dispose();
+                conn.Close();
+            }
+        }
+        
+        public void FillTableDataByDataTable(UserData userData)
+        {
+            if (!userData.UseQuery) return;
+
+            using (var conn = new SqlConnection())
+            {
+                conn.ConnectionString = GetConnString(userData);
+
+                var tbData = new List<TableData>();
+                var adapter = new SqlDataAdapter();
+                var dt = new DataTable();
+                var cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = userData.UserQuery;
+                cmd.Parameters.AddWithValue(PARAMETER_TABLE_NAME, userData.TableName);
+                conn.Open();
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dt);
+
+                foreach (DataColumn column in dt.Columns)
+                {
+                    var tableData = new TableData
+                    {
+                        ColumnName = column.ColumnName,
+                        ColumnType = column.DataType.Name.ToString().ToLower()
+                    };
+
+                    tbData.Add(tableData);
+                }
+
+                userData.TableData = tbData;
+
+                cmd.Dispose();
+                adapter.Dispose();
                 conn.Close();
             }
         }

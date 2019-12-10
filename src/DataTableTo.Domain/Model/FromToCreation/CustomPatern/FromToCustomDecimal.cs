@@ -20,6 +20,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             sb.Append("<decimal>() : 0;");
         }
 
-        public bool SameType(string type) => "decimal".Equals(type) || "money".Equals(type);
+        public bool SameType(string type) => 
+            "decimal".Equals(type) 
+            || "money".Equals(type);
     }
 }

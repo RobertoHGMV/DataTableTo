@@ -22,6 +22,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.DotNetPatern
             sb.Append(")");
         }
 
-        public bool SameType(string type) => "datetime".Equals(type) || "datetime2".Equals(type);
+        public bool SameType(string type) => 
+            "datetime".Equals(type) 
+            || "datetime2".Equals(type);
     }
 }

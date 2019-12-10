@@ -33,9 +33,10 @@
             this.btnCopy = new MetroFramework.Controls.MetroButton();
             this.btnCopyAll = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.tabPageFromTo = new MetroFramework.Controls.MetroTabPage();
             this.listResult = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkUseQuery = new MetroFramework.Controls.MetroCheckBox();
             this.chkValidation = new MetroFramework.Controls.MetroCheckBox();
             this.btnResults = new MetroFramework.Controls.MetroButton();
             this.txtColumnSufix = new MetroFramework.Controls.MetroTextBox();
@@ -48,7 +49,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.tabPageSettings = new MetroFramework.Controls.MetroTabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtMethod = new MetroFramework.Controls.MetroTextBox();
             this.lbCustomMethod = new MetroFramework.Controls.MetroLabel();
@@ -68,13 +69,28 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.tabPageQuery = new MetroFramework.Controls.MetroTabPage();
+            this.tabPageReplace = new MetroFramework.Controls.MetroTabPage();
+            this.txtReplace = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.txtUserQuery = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.txtMethodToReplace = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.btnResultReplace = new MetroFramework.Controls.MetroButton();
+            this.listReplace = new System.Windows.Forms.ListBox();
             this.metroTabControl1.SuspendLayout();
-            this.metroTabPage1.SuspendLayout();
+            this.tabPageFromTo.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
+            this.tabPageSettings.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPageQuery.SuspendLayout();
+            this.tabPageReplace.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdOk
@@ -87,6 +103,7 @@
             this.cmdOk.TabIndex = 10;
             this.cmdOk.Text = "OK";
             this.cmdOk.UseSelectable = true;
+            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
             // 
             // btnCopy
             // 
@@ -98,6 +115,7 @@
             this.btnCopy.TabIndex = 8;
             this.btnCopy.Text = "Copiar Selecionado";
             this.btnCopy.UseSelectable = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btnCopyAll
             // 
@@ -109,37 +127,40 @@
             this.btnCopyAll.TabIndex = 9;
             this.btnCopyAll.Text = "Copiar Tudo";
             this.btnCopyAll.UseSelectable = true;
+            this.btnCopyAll.Click += new System.EventHandler(this.btnCopyAll_Click);
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
+            this.metroTabControl1.Controls.Add(this.tabPageFromTo);
+            this.metroTabControl1.Controls.Add(this.tabPageSettings);
+            this.metroTabControl1.Controls.Add(this.tabPageQuery);
+            this.metroTabControl1.Controls.Add(this.tabPageReplace);
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(767, 515);
-            this.metroTabControl1.TabIndex = 4;
+            this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.UseSelectable = true;
             // 
-            // metroTabPage1
+            // tabPageFromTo
             // 
-            this.metroTabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroTabPage1.Controls.Add(this.listResult);
-            this.metroTabPage1.Controls.Add(this.groupBox1);
-            this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(759, 473);
-            this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "De Para";
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
-            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.tabPageFromTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageFromTo.Controls.Add(this.listResult);
+            this.tabPageFromTo.Controls.Add(this.groupBox1);
+            this.tabPageFromTo.HorizontalScrollbarBarColor = true;
+            this.tabPageFromTo.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPageFromTo.HorizontalScrollbarSize = 10;
+            this.tabPageFromTo.Location = new System.Drawing.Point(4, 38);
+            this.tabPageFromTo.Name = "tabPageFromTo";
+            this.tabPageFromTo.Size = new System.Drawing.Size(759, 473);
+            this.tabPageFromTo.TabIndex = 0;
+            this.tabPageFromTo.Text = "De Para";
+            this.tabPageFromTo.VerticalScrollbarBarColor = true;
+            this.tabPageFromTo.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPageFromTo.VerticalScrollbarSize = 10;
             // 
             // listResult
             // 
@@ -157,6 +178,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.chkUseQuery);
             this.groupBox1.Controls.Add(this.chkValidation);
             this.groupBox1.Controls.Add(this.btnResults);
             this.groupBox1.Controls.Add(this.txtColumnSufix);
@@ -174,6 +196,16 @@
             this.groupBox1.Size = new System.Drawing.Size(751, 155);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // chkUseQuery
+            // 
+            this.chkUseQuery.AutoSize = true;
+            this.chkUseQuery.Location = new System.Drawing.Point(638, 65);
+            this.chkUseQuery.Name = "chkUseQuery";
+            this.chkUseQuery.Size = new System.Drawing.Size(70, 15);
+            this.chkUseQuery.TabIndex = 8;
+            this.chkUseQuery.Text = "Consulta";
+            this.chkUseQuery.UseSelectable = true;
             // 
             // chkValidation
             // 
@@ -195,6 +227,7 @@
             this.btnResults.TabIndex = 7;
             this.btnResults.Text = "Executar";
             this.btnResults.UseSelectable = true;
+            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // txtColumnSufix
             // 
@@ -401,23 +434,23 @@
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Nome da tabela*";
             // 
-            // metroTabPage2
+            // tabPageSettings
             // 
-            this.metroTabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroTabPage2.Controls.Add(this.groupBox4);
-            this.metroTabPage2.Controls.Add(this.groupBox3);
-            this.metroTabPage2.Controls.Add(this.groupBox2);
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(759, 473);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Configurações";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
+            this.tabPageSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageSettings.Controls.Add(this.groupBox4);
+            this.tabPageSettings.Controls.Add(this.groupBox3);
+            this.tabPageSettings.Controls.Add(this.groupBox2);
+            this.tabPageSettings.HorizontalScrollbarBarColor = true;
+            this.tabPageSettings.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPageSettings.HorizontalScrollbarSize = 10;
+            this.tabPageSettings.Location = new System.Drawing.Point(4, 38);
+            this.tabPageSettings.Name = "tabPageSettings";
+            this.tabPageSettings.Size = new System.Drawing.Size(759, 473);
+            this.tabPageSettings.TabIndex = 1;
+            this.tabPageSettings.Text = "Configurações";
+            this.tabPageSettings.VerticalScrollbarBarColor = true;
+            this.tabPageSettings.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPageSettings.VerticalScrollbarSize = 10;
             // 
             // groupBox4
             // 
@@ -471,7 +504,7 @@
             this.lbCustomMethod.AutoSize = true;
             this.lbCustomMethod.Location = new System.Drawing.Point(37, 40);
             this.lbCustomMethod.Name = "lbCustomMethod";
-            this.lbCustomMethod.Size = new System.Drawing.Size(378, 19);
+            this.lbCustomMethod.Size = new System.Drawing.Size(380, 19);
             this.lbCustomMethod.TabIndex = 3;
             this.lbCustomMethod.Text = "Método - Ex: myObject.@field = helper.Get<@type>(\"@field\");";
             // 
@@ -538,7 +571,7 @@
             this.lbExtensionMethod.AutoSize = true;
             this.lbExtensionMethod.Location = new System.Drawing.Point(37, 64);
             this.lbExtensionMethod.Name = "lbExtensionMethod";
-            this.lbExtensionMethod.Size = new System.Drawing.Size(177, 19);
+            this.lbExtensionMethod.Size = new System.Drawing.Size(179, 19);
             this.lbExtensionMethod.TabIndex = 2;
             this.lbExtensionMethod.Text = "Método de extensão - Ex: To";
             // 
@@ -593,6 +626,7 @@
             this.btnConTest.TabIndex = 15;
             this.btnConTest.Text = "Testar Conexão";
             this.btnConTest.UseSelectable = true;
+            this.btnConTest.Click += new System.EventHandler(this.BtnConTest_Click);
             // 
             // txtDatabase
             // 
@@ -754,9 +788,215 @@
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(16, 27);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(65, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(64, 19);
             this.metroLabel6.TabIndex = 0;
             this.metroLabel6.Text = "Servidor*";
+            // 
+            // tabPageQuery
+            // 
+            this.tabPageQuery.Controls.Add(this.metroPanel1);
+            this.tabPageQuery.HorizontalScrollbarBarColor = true;
+            this.tabPageQuery.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPageQuery.HorizontalScrollbarSize = 10;
+            this.tabPageQuery.Location = new System.Drawing.Point(4, 38);
+            this.tabPageQuery.Name = "tabPageQuery";
+            this.tabPageQuery.Size = new System.Drawing.Size(759, 473);
+            this.tabPageQuery.TabIndex = 2;
+            this.tabPageQuery.Text = "Consulta";
+            this.tabPageQuery.VerticalScrollbarBarColor = true;
+            this.tabPageQuery.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPageQuery.VerticalScrollbarSize = 10;
+            // 
+            // tabPageReplace
+            // 
+            this.tabPageReplace.Controls.Add(this.metroPanel2);
+            this.tabPageReplace.HorizontalScrollbarBarColor = true;
+            this.tabPageReplace.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPageReplace.HorizontalScrollbarSize = 10;
+            this.tabPageReplace.Location = new System.Drawing.Point(4, 38);
+            this.tabPageReplace.Name = "tabPageReplace";
+            this.tabPageReplace.Size = new System.Drawing.Size(759, 473);
+            this.tabPageReplace.TabIndex = 3;
+            this.tabPageReplace.Text = "Substiuição";
+            this.tabPageReplace.VerticalScrollbarBarColor = true;
+            this.tabPageReplace.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPageReplace.VerticalScrollbarSize = 10;
+            // 
+            // txtReplace
+            // 
+            this.txtReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtReplace.CustomButton.Image = null;
+            this.txtReplace.CustomButton.Location = new System.Drawing.Point(664, 2);
+            this.txtReplace.CustomButton.Name = "";
+            this.txtReplace.CustomButton.Size = new System.Drawing.Size(73, 73);
+            this.txtReplace.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtReplace.CustomButton.TabIndex = 1;
+            this.txtReplace.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtReplace.CustomButton.UseSelectable = true;
+            this.txtReplace.CustomButton.Visible = false;
+            this.txtReplace.Lines = new string[0];
+            this.txtReplace.Location = new System.Drawing.Point(8, 26);
+            this.txtReplace.MaxLength = 32767;
+            this.txtReplace.Multiline = true;
+            this.txtReplace.Name = "txtReplace";
+            this.txtReplace.PasswordChar = '\0';
+            this.txtReplace.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtReplace.SelectedText = "";
+            this.txtReplace.SelectionLength = 0;
+            this.txtReplace.SelectionStart = 0;
+            this.txtReplace.ShortcutsEnabled = true;
+            this.txtReplace.Size = new System.Drawing.Size(740, 78);
+            this.txtReplace.TabIndex = 2;
+            this.txtReplace.UseSelectable = true;
+            this.txtReplace.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtReplace.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.listReplace);
+            this.metroPanel2.Controls.Add(this.btnResultReplace);
+            this.metroPanel2.Controls.Add(this.txtMethodToReplace);
+            this.metroPanel2.Controls.Add(this.metroLabel11);
+            this.metroPanel2.Controls.Add(this.metroLabel10);
+            this.metroPanel2.Controls.Add(this.txtReplace);
+            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(759, 473);
+            this.metroPanel2.TabIndex = 3;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // txtUserQuery
+            // 
+            this.txtUserQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtUserQuery.CustomButton.Image = null;
+            this.txtUserQuery.CustomButton.Location = new System.Drawing.Point(287, 1);
+            this.txtUserQuery.CustomButton.Name = "";
+            this.txtUserQuery.CustomButton.Size = new System.Drawing.Size(465, 465);
+            this.txtUserQuery.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtUserQuery.CustomButton.TabIndex = 1;
+            this.txtUserQuery.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtUserQuery.CustomButton.UseSelectable = true;
+            this.txtUserQuery.CustomButton.Visible = false;
+            this.txtUserQuery.Lines = new string[0];
+            this.txtUserQuery.Location = new System.Drawing.Point(3, 3);
+            this.txtUserQuery.MaxLength = 32767;
+            this.txtUserQuery.Multiline = true;
+            this.txtUserQuery.Name = "txtUserQuery";
+            this.txtUserQuery.PasswordChar = '\0';
+            this.txtUserQuery.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtUserQuery.SelectedText = "";
+            this.txtUserQuery.SelectionLength = 0;
+            this.txtUserQuery.SelectionStart = 0;
+            this.txtUserQuery.ShortcutsEnabled = true;
+            this.txtUserQuery.Size = new System.Drawing.Size(753, 467);
+            this.txtUserQuery.TabIndex = 2;
+            this.txtUserQuery.UseSelectable = true;
+            this.txtUserQuery.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtUserQuery.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.txtUserQuery);
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(759, 473);
+            this.metroPanel1.TabIndex = 2;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(8, 4);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(202, 19);
+            this.metroLabel10.TabIndex = 3;
+            this.metroLabel10.Text = "Ex: Column1, Column2, Column3";
+            // 
+            // txtMethodToReplace
+            // 
+            this.txtMethodToReplace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtMethodToReplace.CustomButton.Image = null;
+            this.txtMethodToReplace.CustomButton.Location = new System.Drawing.Point(605, 1);
+            this.txtMethodToReplace.CustomButton.Name = "";
+            this.txtMethodToReplace.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtMethodToReplace.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtMethodToReplace.CustomButton.TabIndex = 1;
+            this.txtMethodToReplace.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtMethodToReplace.CustomButton.UseSelectable = true;
+            this.txtMethodToReplace.CustomButton.Visible = false;
+            this.txtMethodToReplace.Lines = new string[0];
+            this.txtMethodToReplace.Location = new System.Drawing.Point(8, 131);
+            this.txtMethodToReplace.MaxLength = 32767;
+            this.txtMethodToReplace.Name = "txtMethodToReplace";
+            this.txtMethodToReplace.PasswordChar = '\0';
+            this.txtMethodToReplace.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtMethodToReplace.SelectedText = "";
+            this.txtMethodToReplace.SelectionLength = 0;
+            this.txtMethodToReplace.SelectionStart = 0;
+            this.txtMethodToReplace.ShortcutsEnabled = true;
+            this.txtMethodToReplace.Size = new System.Drawing.Size(627, 23);
+            this.txtMethodToReplace.TabIndex = 21;
+            this.txtMethodToReplace.UseSelectable = true;
+            this.txtMethodToReplace.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtMethodToReplace.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(6, 110);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(380, 19);
+            this.metroLabel11.TabIndex = 20;
+            this.metroLabel11.Text = "Método - Ex: myObject.@field = helper.Get<@type>(\"@field\");";
+            // 
+            // btnResultReplace
+            // 
+            this.btnResultReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResultReplace.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnResultReplace.Location = new System.Drawing.Point(641, 131);
+            this.btnResultReplace.Name = "btnResultReplace";
+            this.btnResultReplace.Size = new System.Drawing.Size(107, 23);
+            this.btnResultReplace.TabIndex = 22;
+            this.btnResultReplace.Text = "Executar";
+            this.btnResultReplace.UseSelectable = true;
+            this.btnResultReplace.Click += new System.EventHandler(this.btnResultReplace_Click);
+            // 
+            // listReplace
+            // 
+            this.listReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listReplace.FormattingEnabled = true;
+            this.listReplace.Location = new System.Drawing.Point(8, 163);
+            this.listReplace.Name = "listReplace";
+            this.listReplace.Size = new System.Drawing.Size(740, 303);
+            this.listReplace.TabIndex = 23;
             // 
             // DataTableForm
             // 
@@ -771,16 +1011,21 @@
             this.Name = "DataTableForm";
             this.Text = "DataTable To";
             this.metroTabControl1.ResumeLayout(false);
-            this.metroTabPage1.ResumeLayout(false);
+            this.tabPageFromTo.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.metroTabPage2.ResumeLayout(false);
+            this.tabPageSettings.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPageQuery.ResumeLayout(false);
+            this.tabPageReplace.ResumeLayout(false);
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
+            this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -790,8 +1035,8 @@
         private MetroFramework.Controls.MetroButton btnCopy;
         private MetroFramework.Controls.MetroButton btnCopyAll;
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroTabPage tabPageFromTo;
+        private MetroFramework.Controls.MetroTabPage tabPageSettings;
         private System.Windows.Forms.GroupBox groupBox1;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
@@ -825,6 +1070,18 @@
         private MetroFramework.Controls.MetroTextBox txtMethod;
         private MetroFramework.Controls.MetroLabel lbCustomMethod;
         private System.Windows.Forms.ListBox listResult;
+        private MetroFramework.Controls.MetroTabPage tabPageQuery;
+        private MetroFramework.Controls.MetroCheckBox chkUseQuery;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroTextBox txtUserQuery;
+        private MetroFramework.Controls.MetroTabPage tabPageReplace;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroTextBox txtReplace;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private System.Windows.Forms.ListBox listReplace;
+        private MetroFramework.Controls.MetroButton btnResultReplace;
+        private MetroFramework.Controls.MetroTextBox txtMethodToReplace;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
     }
 }
 

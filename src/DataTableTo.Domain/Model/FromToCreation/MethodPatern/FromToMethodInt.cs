@@ -12,6 +12,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.MethodPatern
             sb.Append(userData.Method.Replace(userData.typeParam, "int").Replace(userData.fieldParam, data.ColumnName));
         }
 
-        public bool SameType(string type) => "int".Equals(type);
+        public bool SameType(string type) =>
+            "int".Equals(type)
+            || "int32".Equals(type);
     }
 }

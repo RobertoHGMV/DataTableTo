@@ -12,6 +12,10 @@ namespace DataTableTo.Domain.Model.FromToCreation.MethodPatern
             sb.Append(userData.Method.Replace(userData.typeParam, "string").Replace(userData.fieldParam, data.ColumnName));
         }
 
-        public bool SameType(string type) => "nvarchar".Equals(type) || "varchar".Equals(type) || "nchar".Equals(type);
+        public bool SameType(string type) =>
+            "nvarchar".Equals(type)
+            || "varchar".Equals(type)
+            || "nchar".Equals(type)
+            || "string".Equals(type);
     }
 }

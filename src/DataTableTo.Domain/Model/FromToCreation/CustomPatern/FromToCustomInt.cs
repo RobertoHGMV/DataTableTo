@@ -20,6 +20,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.CustomPatern
             sb.Append("<int>() : 0;");
         }
 
-        public bool SameType(string type) => "int".Equals(type);
+        public bool SameType(string type) => 
+            "int".Equals(type) 
+            || "int32".Equals(type);
     }
 }

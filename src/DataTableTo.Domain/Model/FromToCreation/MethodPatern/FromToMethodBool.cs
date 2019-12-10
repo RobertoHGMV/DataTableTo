@@ -12,6 +12,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.MethodPatern
             sb.Append(userData.Method.Replace(userData.typeParam, "bool").Replace(userData.fieldParam, data.ColumnName));
         }
 
-        public bool SameType(string type) => "bit".Equals(type);
+        public bool SameType(string type) =>
+            "bit".Equals(type)
+            || "boolean".Equals(type);
     }
 }

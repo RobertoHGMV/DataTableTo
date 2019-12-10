@@ -19,6 +19,8 @@ namespace DataTableTo.Domain.Model.FromToCreation.DotNetPatern
             sb.Append(") : 0;");
         }
 
-        public bool SameType(string type) => "int".Equals(type);
+        public bool SameType(string type) => 
+            "int".Equals(type) 
+            || "int32".Equals(type);
     }
 }
