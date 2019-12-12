@@ -21,6 +21,7 @@ namespace DataTableTo.MetroUI
     {
         private readonly IUserDataRepository _repository;
         private readonly IFromToService _service;
+        private readonly IReplaceService _replaceService;
         private UserData _userData;
 
         public DataTableForm()
@@ -29,6 +30,7 @@ namespace DataTableTo.MetroUI
 
             _repository = new UserDataRepository();
             _service = new FromToService();
+            _replaceService = new ReplaceService();
             _userData = new UserData();
             chkDotNet.Enabled = false;
             FillControls();
@@ -121,7 +123,8 @@ namespace DataTableTo.MetroUI
 
         private void ResultsReplace()
         {
-
+            var result = _replaceService.GetReplaceResult(txtReplace.Text, txtMethodToReplace.Text);
+            listReplace.DataSource = result;
         }
 
         #endregion
@@ -138,19 +141,44 @@ namespace DataTableTo.MetroUI
             lbCustomMethod.Enabled = txtMethod.Enabled = chkCustomMethod.Checked;
         }
 
+        private void TestConnection()
+        {
+            FillClass();
+            _userData.ValidateConfiguration();
+
+            if (_repository.IsConnectedSqlServer(_userData))
+                MessageSuccessfull("Conexão realizada com sucesso!");
+        }
+
+        private void Copy(ListBox listBox)
+        {
+            Clipboard.SetText(listBox.Text);
+        }
+
+        private void CopyAll(ListBox listBox)
+        {
+            var sb = new StringBuilder();
+
+            foreach (string item in listBox.Items)
+                sb.AppendLine(item);
+
+            Clipboard.SetText(sb.ToString());
+        }
+
         private void Copy()
         {
-            Clipboard.SetText(listResult.Text);
+            if (IsTabReplace())
+                Copy(listReplace);
+            else
+                Copy(listResult);
         }
 
         private void CopyAll()
         {
-            var sb = new StringBuilder();
-
-            foreach (string item in listResult.Items)
-                sb.AppendLine(item);
-
-            Clipboard.SetText(sb.ToString());
+            if (IsTabReplace())
+                CopyAll(listReplace);
+            else
+                CopyAll(listResult);
         }
 
         private void chkCustomMethodExt_CheckedChanged(object sender, EventArgs e)
@@ -229,10 +257,7 @@ namespace DataTableTo.MetroUI
         {
             try
             {
-                FillClass();
-                _userData.ValidateConfiguration();
-                if (_repository.IsConnectedSqlServer(_userData))
-                    MessageSuccessfull("Conexão realizada com sucesso!");
+                TestConnection();
             }
             catch (Exception ex)
             {
@@ -251,5 +276,7 @@ namespace DataTableTo.MetroUI
                 MessageError(ex);
             }
         }
+
+        private bool IsTabReplace() => fromToTabControl.SelectedTab.Equals(tabPageReplace);
     }
 }

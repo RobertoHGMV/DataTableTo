@@ -89,6 +89,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FromToService.cs" />
     <Compile Include="Services\IFromToService.cs" />
+    <Compile Include="Services\IReplaceService.cs" />
+    <Compile Include="Services\ReplaceService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
